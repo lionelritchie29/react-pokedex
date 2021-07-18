@@ -10,6 +10,7 @@ import Home from './Pages/Home'
 import 'twin.macro'
 import PokemonDetail from './Pages/PokemonDetail'
 import tw from 'twin.macro'
+import Favorites from './Pages/Favorites'
 
 const Container = tw.div`w-11/12 mx-auto py-3`
 
@@ -22,7 +23,7 @@ function App() {
 
           <Switch>
             <Route path="/favorites">
-                <Home />
+                <Favorites />
             </Route>
             <Route path="/:name">
                 <PokemonDetail />

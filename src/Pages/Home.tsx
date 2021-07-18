@@ -8,6 +8,7 @@ import Pokemon from '../models/pokemon'
 import { GET_ALL_POKEMONS } from '../queries/queries'
 import tw from 'twin.macro'
 import PokemonCard from '../Components/PokemonCard'
+import SearchBar from '../Components/SearchBar'
 
 const GridContainer = tw.div`grid grid-cols-2 gap-2` 
 const Heading = tw.h1`text-xl text-white mb-2`
@@ -24,10 +25,12 @@ const Home = () => {
     <React.Fragment>
         <Heading>All Pokemons</Heading>
 
-        <GridContainer>
+        <SearchBar></SearchBar>
+
+        <GridContainer tw='mt-4'>
         {pokemons.map(poke => {
           return (
-            <PokemonCard key={poke.id} pokemon={poke} />
+            <PokemonCard key={poke.id} pokemon={poke} isInFavoritePage={false}/>
           )
         })}
         </GridContainer>

@@ -1,7 +1,8 @@
 import Pokemon from "./pokemon";
 
 type Props = {
-  pokemon: Pokemon
+  pokemon: Pokemon,
+  isInFavoritePage: boolean
 }
 
 export default Props;
