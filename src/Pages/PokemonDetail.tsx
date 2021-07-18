@@ -4,13 +4,14 @@ import { jsx } from '@emotion/react'
 
 import React, {useState} from 'react'
 import { useParams } from 'react-router-dom'
-import UrlParams from '../models/urlParams'
+import UrlParams from '../models/type/url-params'
 import tw from 'twin.macro'
 import { useQuery } from '@apollo/client'
 import { GET_POKEMON_BY_NAME } from '../queries/queries'
 import Pokemon from '../models/pokemon'
 import capitalizeLetter from '../utils/capitalize-first-letter'
 import {addFavoritePokemon, isInFavorite} from '../utils/favorite-pokemon-utils'
+import { useEffect } from 'react'
 
 const Card = tw.div`bg-gray-800 text-white p-3 rounded-md`
 const TwoColsGrid = tw.div`grid grid-cols-2 gap-2`
@@ -23,12 +24,22 @@ const RemoveFavoriteBtn = tw.button`bg-red-700 text-white rounded py-2 px-3 mt-2
 
 const PokemonDetail = () => {
   const {name} = useParams<UrlParams>()
+  const [isFavorited, setIsFavorited] = useState(false)
+  const [pokemon, setPokemon] = useState<Pokemon>(null)
   const {loading, error, data} = useQuery(GET_POKEMON_BY_NAME, {variables: {name}})
-  let pokemon: Pokemon = null
+
+  useEffect(() => {
+    if (data) {
+      const p: Pokemon = data.pokemon
+      setPokemon(p)
+      setIsFavorited(isInFavorite(p))
+    }
+  }, [data])
 
   const onAddFavorite = () => {
     if (pokemon) {
       addFavoritePokemon(pokemon)
+      setIsFavorited(true)
     } else {
       console.error('Pokemon is null')
     }
@@ -37,8 +48,8 @@ const PokemonDetail = () => {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error...</p>
   
-  pokemon = data.pokemon;
   return (
+    pokemon != null && 
     <section>
       <Heading>{capitalizeLetter(pokemon.name)}</Heading>
       <TwoColsGrid>
@@ -52,7 +63,7 @@ const PokemonDetail = () => {
       </TwoColsGrid>
 
       {
-        isInFavorite (pokemon) ?
+        isFavorited ?
           <RemoveFavoriteBtn onClick={onAddFavorite}>
             Remove from Favorite
           </RemoveFavoriteBtn> :
@@ -116,7 +127,7 @@ const PokemonDetail = () => {
         )
       })}
 
-    </section>
+    </section>  
   )
 }
 
