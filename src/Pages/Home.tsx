@@ -39,7 +39,7 @@ const Home = () => {
         <GridContainer tw='mt-4'>
         {displayPokemons.map(poke => {
           return (
-            <PokemonCard key={poke.id} pokemon={poke} isInFavoritePage={false}/>
+            <PokemonCard key={poke.id} pokemon={poke} isInFavoritePage={false} refreshPokemonList={null}/>
           )
         })}
         </GridContainer>

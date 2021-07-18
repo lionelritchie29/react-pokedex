@@ -10,10 +10,10 @@ import { useQuery } from '@apollo/client'
 import { GET_POKEMON_BY_NAME } from '../queries/queries'
 import Pokemon from '../models/pokemon'
 import capitalizeLetter from '../utils/capitalize-first-letter'
-import {addFavoritePokemon, isInFavorite} from '../utils/favorite-pokemon-utils'
+import {addFavoritePokemon, isInFavorite, removeFavoritePokemon} from '../utils/favorite-pokemon-utils'
 import { useEffect } from 'react'
+import {Card} from '../Components/StyledComponents'
 
-const Card = tw.div`bg-gray-800 text-white p-3 rounded-md`
 const TwoColsGrid = tw.div`grid grid-cols-2 gap-2`
 
 const Heading = tw.h1`text-xl text-white mb-2`
@@ -40,8 +40,13 @@ const PokemonDetail = () => {
     if (pokemon) {
       addFavoritePokemon(pokemon)
       setIsFavorited(true)
-    } else {
-      console.error('Pokemon is null')
+    }
+  }
+
+  const onRemoveFavorite = () => {
+    if (pokemon) {
+      removeFavoritePokemon(pokemon)
+      setIsFavorited(false)
     }
   }
 
@@ -64,7 +69,7 @@ const PokemonDetail = () => {
 
       {
         isFavorited ?
-          <RemoveFavoriteBtn onClick={onAddFavorite}>
+          <RemoveFavoriteBtn onClick={onRemoveFavorite}>
             Remove from Favorite
           </RemoveFavoriteBtn> :
           <AddFavoriteBtn onClick={onAddFavorite}>
