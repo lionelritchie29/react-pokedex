@@ -12,7 +12,7 @@ import PokemonDetail from './Pages/PokemonDetail'
 import tw from 'twin.macro'
 import Favorites from './Pages/Favorites'
 
-const Container = tw.div`w-11/12 mx-auto py-3`
+const Container = tw.div`w-11/12 mx-auto py-3 lg:w-3/4`
 
 function App() {
   return (
