@@ -1,3 +1,16 @@
+# Live : 
+https://react-graphql-pokedex.netlify.app/  
+
+# API Endpoint: 
+https://graphql-pokeapi.vercel.app/ 
+
+# Stack:  
+ -React  
+ -Apollo Client (GraphQL)  
+ -Emotion  
+ -Tailwind  
+ -Typescript  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
