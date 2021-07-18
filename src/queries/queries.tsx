@@ -2,7 +2,7 @@ import {gql, DocumentNode} from '@apollo/client'
 
 const GET_ALL_POKEMONS: DocumentNode = gql`
 query {
-  pokemons(limit: 100){
+  pokemons(limit: 75){
     results{
       id,
       name,

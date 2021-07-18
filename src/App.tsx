@@ -17,23 +17,23 @@ const Container = tw.div`w-11/12 mx-auto py-3`
 function App() {
   return (
     <div tw="bg-gray-900 min-h-screen">
-      <Container>
-        <Router>
-          <Navbar />
+      <Router>
+        <Navbar />
 
-          <Switch>
-            <Route path="/favorites">
-                <Favorites />
-            </Route>
-            <Route path="/:name">
-                <PokemonDetail />
-            </Route>
-            <Route path="/">
-                <Home />
-            </Route>
-          </Switch>
-        </Router>
-      </Container>
+        <Container>
+            <Switch>
+              <Route path="/favorites">
+                  <Favorites />
+              </Route>
+              <Route path="/:name">
+                  <PokemonDetail />
+              </Route>
+              <Route path="/">
+                  <Home />
+              </Route>
+            </Switch>
+        </Container>
+      </Router>
     </div>
   );
 }

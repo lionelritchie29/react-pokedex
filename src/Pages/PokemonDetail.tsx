@@ -13,6 +13,8 @@ import capitalizeLetter from '../utils/capitalize-first-letter'
 import {addFavoritePokemon, isInFavorite, removeFavoritePokemon} from '../utils/favorite-pokemon-utils'
 import { useEffect } from 'react'
 import {Card} from '../Components/StyledComponents'
+import Loading from '../Components/Loading'
+import ErrorCard from '../Components/ErrorCard'
 
 const TwoColsGrid = tw.div`grid grid-cols-2 gap-2`
 
@@ -20,7 +22,7 @@ const Heading = tw.h1`text-xl text-white mb-2`
 const SubHeading = tw.h3`ml-1 text-gray-200`
 const Divider = tw.div`mt-8 border border-gray-600`
 const AddFavoriteBtn = tw.button`bg-pink-700 text-white rounded py-2 px-3 mt-2 w-full hover:bg-pink-600`
-const RemoveFavoriteBtn = tw.button`bg-red-700 text-white rounded py-2 px-3 mt-2 w-full hover:bg-pink-600`
+const RemoveFavoriteBtn = tw.button`bg-red-700 text-white rounded py-2 px-3 mt-2 w-full hover:bg-red-600`
 
 const PokemonDetail = () => {
   const {name} = useParams<UrlParams>()
@@ -50,8 +52,8 @@ const PokemonDetail = () => {
     }
   }
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error...</p>
+  if (loading) return <Loading />
+  if (error) return <ErrorCard />
   
   return (
     pokemon != null && 
@@ -59,7 +61,7 @@ const PokemonDetail = () => {
       <Heading>{capitalizeLetter(pokemon.name)}</Heading>
       <TwoColsGrid>
         <Card>
-          <img tw='mx-auto' src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img width="100" height="100" tw='mx-auto' src={pokemon.sprites.front_default} alt={pokemon.name} />
         </Card>
 
         <Card>

@@ -30,7 +30,7 @@ const PokemonCard = ({pokemon, isInFavoritePage, refreshPokemonList}: PokemonCar
   return (
     <Link to={`/${pokemon.name}`}>
       <Card>
-      <img loading="lazy" tw='mx-auto' src={imgSrc} alt={pokemon.name} />
+      <img width="100" height="100" loading="lazy" tw='mx-auto' src={imgSrc} alt={pokemon.name} />
       <Title>{capitalizeLetter(pokemon.name)}</Title>
       
       { isInFavoritePage && 

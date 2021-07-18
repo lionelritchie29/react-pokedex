@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import Pokemon from '../models/pokemon'
 import PokemonCard from '../Components/PokemonCard'
 import { retrieveFavoritePokemons } from '../utils/favorite-pokemon-utils'
-import tw from 'twin.macro'
-
-const Heading = tw.h1`text-xl text-white mb-2`
-const GridContainer = tw.div`grid grid-cols-2 gap-2`
+import 'twin.macro'
+import { Card, GridContainer, Heading } from '../Components/StyledComponents'
 
 const Favorites = () => {
   const [pokemons, setPokemons] = useState(retrieveFavoritePokemons())
@@ -20,6 +18,14 @@ const Favorites = () => {
   return (
     <React.Fragment>
         <Heading>My Favorites</Heading>
+
+        {pokemons.length === 0 &&
+          <div>
+            <Card>
+            There is no favorited pokemon yet
+          </Card>
+          </div>
+        }
 
         <GridContainer>
         {pokemons.map(poke => {
