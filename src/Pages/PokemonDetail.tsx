@@ -67,6 +67,14 @@ const PokemonDetail = () => {
         <Card>
           <img tw='mx-auto' src={pokemon.sprites.back_default} alt={pokemon.name} />
         </Card>
+
+        <Card>
+          <img tw='mx-auto' src={pokemon.sprites.front_shiny} alt={pokemon.name} />
+        </Card>
+
+        <Card>
+          <img tw='mx-auto' src={pokemon.sprites.back_shiny} alt={pokemon.name} />
+        </Card>
       </TwoColsGrid>
 
       {

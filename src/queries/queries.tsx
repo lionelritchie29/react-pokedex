@@ -22,6 +22,8 @@ query GetPokemonByName($name:String!){
     sprites{
       front_default,
       back_default,
+      front_shiny,
+      back_shiny
     },
     abilities{
       ability {
