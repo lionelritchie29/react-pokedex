@@ -12,7 +12,7 @@ const Favorites = () => {
     const index: number = pokemons.findIndex(p => p.name === pokemon.name)
     pokemons.splice(index, 1)
     setPokemons(pokemons)
-    window.location.reload();
+    window.location.href = "/favorites"
   }
   
   return (
